@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>四大報表入門教學簡報</title>
+  <style>
+    :root { --bg:#0f172a; --card:#ffffff; --accent:#2563eb; --text:#1e293b; --muted:#64748b; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", sans-serif; background: var(--bg); color: var(--text); height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; }
+    .deck { width: min(960px, 92vw); height: min(580px, 82vh); background: var(--card); border-radius: 18px; padding: 48px 56px; position: relative; box-shadow: 0 24px 60px rgba(0,0,0,0.35); display: flex; flex-direction: column; justify-content: space-between; }
+    .slide { display: none; height: 100%; flex-direction: column; justify-content: space-between; }
+    .slide.active { display: flex; }
+    .tag { display: inline-block; background: #dbeafe; color: #1d4ed8; font-weight: 700; font-size: 0.85rem; padding: 4px 12px; border-radius: 999px; margin-bottom: 14px; }
+    h1 { font-size: 2.5rem; color: #0f172a; line-height: 1.25; margin-bottom: 16px; }
+    h2 { font-size: 1.9rem; color: #0f172a; margin-bottom: 20px; border-left: 6px solid var(--accent); padding-left: 14px; }
+    p.lead { font-size: 1.15rem; color: var(--muted); line-height: 1.7; }
+    ul { padding-left: 24px; font-size: 1.08rem; line-height: 1.85; }
+    li { margin-bottom: 10px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 10px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px; }
+    .box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; }
+    .box h3 { font-size: 1.1rem; color: #1e40af; margin-bottom: 8px; }
+    .box p { font-size: 0.95rem; color: #334155; line-height: 1.6; }
+    .formula { background: #eff6ff; border: 1px solid #bfdbfe; padding: 14px 18px; border-radius: 10px; font-weight: 600; color: #1e3a8a; margin: 12px 0; font-size: 1.02rem; }
+    .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; padding-top: 14px; font-size: 0.85rem; color: var(--muted); }
+    .wiki-ref { background: #f1f5f9; padding: 4px 10px; border-radius: 6px; font-weight: 600; color: #334155; }
+    .controls { margin-top: 18px; display: flex; gap: 12px; align-items: center; color: #cbd5e1; }
+    .controls button { background: #1e293b; color: #fff; border: 1px solid #334155; padding: 8px 18px; border-radius: 8px; cursor: pointer; font-size: 0.95rem; }
+    .controls button:hover { background: var(--accent); }
+    .progress { position: absolute; top: 0; left: 0; height: 5px; background: var(--accent); border-radius: 18px 0 0 0; transition: width 0.25s; }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <div class="progress" id="progress"></div>
+
+    <!-- Slide 1 -->
+    <section class="slide active">
+      <div style="margin: auto 0;">
+        <span class="tag">新手財報入門課</span>
+        <h1>10 分鐘看懂企業四大報表</h1>
+        <p class="lead">不需要會計背景，用生活化比喻帶你讀懂公司的體檢表、成績單、現金日記簿與股東帳本。</p>
+      </div>
+      <div class="footer"><span>操作提示：使用鍵盤 ← → 或下方按鈕換頁</span><span class="wiki-ref">對應 Wiki：index.md [S1]</span></div>
+    </section>
+
+    <!-- Slide 2 -->
+    <section class="slide">
+      <div>
+        <h2>為什麼要看財務報表？</h2>
+        <p class="lead" style="margin-bottom:18px;">把公司想像成一座房子，財務報表就是房子的<strong>「設計圖紙」</strong>——讓你看清結構、盈利能力與償債風險。</p>
+        <div class="grid-2">
+          <div class="box"><h3>資產負債表（特定時點）</h3><p>企業的「健康檢查報告」，看目前擁有多少資產、欠多少債。</p></div>
+          <div class="box"><h3>綜合損益表（一段期間）</h3><p>企業的「營運成績單」，看這段期間到底有沒有賺錢。</p></div>
+          <div class="box"><h3>現金流量表（一段期間）</h3><p>企業的「現金日記簿」，看現金實際怎麼流進與流出。</p></div>
+          <div class="box"><h3>股東權益變動表（一段期間）</h3><p>股東家底的「增減帳本」，看盈餘、股息與增資的影響。</p></div>
+        </div>
+      </div>
+      <div class="footer"><span>四大報表總覽</span><span class="wiki-ref">對應 Wiki：index.md [S1][S2][S3][S4][S5]</span></div>
+    </section>
+
+    <!-- Slide 3 -->
+    <section class="slide">
+      <div>
+        <h2>報表一：資產負債表（看家底）</h2>
+        <div class="formula">資產（擁有的資源）＝ 負債（欠別人的債）＋ 股東權益（屬於股東的淨值）</div>
+        <ul>
+          <li><strong>流動 vs. 非流動資產：</strong>一年內可變現（現金、應收帳款、存貨）屬流動；設備與不動產屬非流動。</li>
+          <li><strong>流動比率（流動資產 ÷ 流動負債）：</strong>大於 1 代表短期償債能力穩健。</li>
+          <li><strong>負債比率：</strong>衡量財務槓桿，負債過高意味著較高的債務壓力與風險。</li>
+        </ul>
+      </div>
+      <div class="footer"><span>特定日期的財務快照</span><span class="wiki-ref">對應 Wiki：balance-sheet.md [S4]</span></div>
+    </section>
+
+    <!-- Slide 4 -->
+    <section class="slide">
+      <div>
+        <h2>報表二：綜合損益表（看賺不賺錢）</h2>
+        <p class="lead" style="margin-bottom:10px;">傳統損益表看經營團隊「可控項目」；綜合損益表額外納入匯率、利率等「不可控因素」。</p>
+        <div class="formula">營業收入 － 營業成本 ＝ 營業毛利 － 營業費用 ＝ 營業利益 (EBIT) ± 業外收支 ＝ 稅前淨利 － 所得稅 ＝ 稅後淨利</div>
+        <div class="grid-2">
+          <div class="box"><h3>營業成本（直接成本）</h3><p>讓貨品變成「賣得出去」的成本：原料、產線薪資、工廠折舊。</p></div>
+          <div class="box"><h3>營業費用（間接費用）</h3><p>把貨品「真的賣出去」的支出：管理、銷售、研發費用。</p></div>
+        </div>
+      </div>
+      <div class="footer"><span>一段期間的獲利階梯</span><span class="wiki-ref">對應 Wiki：income-statement.md [S3]</span></div>
+    </section>
+
+    <!-- Slide 5 -->
+    <section class="slide">
+      <div>
+        <h2>損益表必學指標：獲利三率與 EPS</h2>
+        <div class="grid-3">
+          <div class="box"><h3>毛利率</h3><p><strong>營業毛利 ÷ 營收</strong><br>看產品競爭力與成本控管能力。</p></div>
+          <div class="box"><h3>營業利益率</h3><p><strong>營業利益 ÷ 營收</strong><br>看本業獲利與管銷研內控能力。</p></div>
+          <div class="box"><h3>稅後淨利率</h3><p><strong>稅後淨利 ÷ 營收</strong><br>看企業最終整體賺錢能力。</p></div>
+        </div>
+        <div class="formula" style="margin-top:18px;">每股盈餘 EPS ＝ 稅後淨利 ÷ 在外流通股數（消除公司規模差異，看每 1 股賺幾元）</div>
+      </div>
+      <div class="footer"><span>財務比率比單看金額更客觀</span><span class="wiki-ref">對應 Wiki：income-statement.md [S3]</span></div>
+    </section>
+
+    <!-- Slide 6 -->
+    <section class="slide">
+      <div>
+        <h2>報表三：現金流量表（看真金白銀）</h2>
+        <p class="lead" style="margin-bottom:14px;">就算損益表有獲利，若現金流不穩仍可能面臨營運危機。</p>
+        <div class="grid-3">
+          <div class="box"><h3>運營活動</h3><p>日常銷售收款與支付薪資；<strong>為正</strong>代表本業能帶來充裕現金。</p></div>
+          <div class="box"><h3>投資活動</h3><p>購買設備、出售資產；支出高通常代表公司正<strong>積極擴展</strong>。</p></div>
+          <div class="box"><h3>籌資活動</h3><p>借款、發股、還債；若<strong>頻繁籌資</strong>須留意財務穩定性。</p></div>
+        </div>
+        <p style="margin-top:16px; color:#64748b; font-size:0.95rem;">提醒：現金流量表像「後視鏡」，只反映過去歷史，且易受季節性銷售影響。</p>
+      </div>
+      <div class="footer"><span>企業的現金日記簿</span><span class="wiki-ref">對應 Wiki：cash-flow.md [S1][S5]</span></div>
+    </section>
+
+    <!-- Slide 7 -->
+    <section class="slide">
+      <div>
+        <h2>報表四：股東權益變動表（看股東家底）</h2>
+        <p class="lead" style="margin-bottom:14px;">記錄一段期間內股東權益的增減原因，核心項目包含股本、資本公積、保留盈餘與其他綜合收益 (OCI)。</p>
+        <div class="grid-2">
+          <div class="box"><h3>讓股東權益「增加」</h3><p>• 公司當期盈利（累積保留盈餘）<br>• 增資發行新股</p></div>
+          <div class="box"><h3>讓股東權益「減少」</h3><p>• 公司當期虧損<br>• 派發股息、股票回購（庫藏股）</p></div>
+        </div>
+      </div>
+      <div class="footer"><span>觀察公司如何運用內部資本</span><span class="wiki-ref">對應 Wiki：equity-changes.md [S2]</span></div>
+    </section>
+
+    <!-- Slide 8 -->
+    <section class="slide">
+      <div>
+        <h2>新手讀財報的 3 大避坑原則</h2>
+        <ul>
+          <li><strong>1. 剔除非經常性收益：</strong>變賣土地或處分投資是一去不復返的業外收入，會暫時墊高淨利，不可誤當本業成長。</li>
+          <li><strong>2. 拒絕單一指標定生死：</strong>必須交叉比對四大報表，並與企業「歷年趨勢」及「同業平均」比較。</li>
+          <li><strong>3. 查閱附註與審計報告：</strong>透過財報附註理解會計假設，並確認外部獨立審計師的簽署意見。</li>
+        </ul>
+      </div>
+      <div class="footer"><span>避開數字表面陷阱</span><span class="wiki-ref">對應 Wiki：connections.md [S1][S3][S4][S5]</span></div>
+    </section>
+
+    <!-- Slide 9 -->
+    <section class="slide">
+      <div style="margin: auto 0;">
+        <span class="tag">重點總結</span>
+        <h1>四張表一起看，才是完整真相</h1>
+        <ul>
+          <li>看<strong>資產負債表</strong>：確認短期償債能力與負債風險（家底穩不穩）。</li>
+          <li>看<strong>綜合損益表</strong>：用獲利三率與 EPS 檢視本業競爭力（會不會賺）。</li>
+          <li>看<strong>現金流量表</strong>：確認本業是否真的收進現金（口袋有沒有錢）。</li>
+          <li>看<strong>股東權益變動表</strong>：追蹤盈餘累積、股利與增資動向（對股東好不好）。</li>
+        </ul>
+      </div>
+      <div class="footer"><span>感謝觀看！</span><span class="wiki-ref">對應 Wiki：index.md &amp; sources.md [S1–S5]</span></div>
+    </section>
+  </div>
+
+  <div class="controls">
+    <button id="prev">← 上一頁</button>
+    <span id="counter">1 / 9</span>
+    <button id="next">下一頁 →</button>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('counter');
+    const progress = document.getElementById('progress');
+    let idx = 0;
+    function render() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+      counter.textContent = `${idx + 1} / ${slides.length}`;
+      progress.style.width = `${((idx + 1) / slides.length) * 100}%`;
+    }
+    document.getElementById('prev').onclick = () => { if (idx > 0) { idx--; render(); } };
+    document.getElementById('next').onclick = () => { if (idx < slides.length - 1) { idx++; render(); } };
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' && idx < slides.length - 1) { idx++; render(); }
+      if (e.key === 'ArrowLeft' && idx > 0) { idx--; render(); }
+    });
+    render();
+  </script>
+</body>
+</html>
